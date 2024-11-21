@@ -58,6 +58,8 @@ hooks:
     deploy: |
         # Move committed files from temp directory back into mounts.
         ./handle_mounts.sh
+    post_deploy: | 
+        NEXT_PID="$(pgrep next)" ; kill -9 $NEXT_PID
 
 # Information on the app's source code and operations that can be run on it.
 # More information: https://docs.platform.sh/create-apps/app-reference.html#source
